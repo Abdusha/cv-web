@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Code2, Users, Briefcase, GraduationCap, Code, Server, Gamepad2, Smartphone, Globe } from 'lucide-react';
 import Image from 'next/image';
+import profilePic from '../../public/profile.jpg';
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -81,7 +82,7 @@ export default function Home() {
           <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-full overflow-hidden border-4 border-white dark:border-neutral-800 shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
             {/* Profile Photo */}
             <Image
-              src="/profile.jpg"
+              src={profilePic}
               alt="Abdurrahman Shaleh"
               fill
               className="object-cover"
