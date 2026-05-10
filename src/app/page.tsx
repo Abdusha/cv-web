@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Code2, Users, Briefcase, GraduationCap, Code, Server, Gamepad2, Smartphone, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -28,6 +29,13 @@ export default function Home() {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     }
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('shaleh2105@gmail.com');
+    alert('Email copied to clipboard: shaleh2105@gmail.com');
+    window.location.href = 'mailto:shaleh2105@gmail.com';
   };
 
   return (
@@ -59,7 +67,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col md:flex-row gap-4 mt-8 items-center md:justify-start justify-center">
-              <a href="mailto:shaleh2105@gmail.com" className="px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium rounded-full hover:scale-105 transition-transform duration-200 shadow-lg shadow-neutral-900/20 dark:shadow-white/10">
+              <a href="mailto:shaleh2105@gmail.com" onClick={handleContactClick} className="px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium rounded-full hover:scale-105 transition-transform duration-200 shadow-lg shadow-neutral-900/20 dark:shadow-white/10">
                 Contact Me
               </a>
               <div className="flex gap-4 items-center ml-4">
@@ -70,12 +78,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-full overflow-hidden border-4 border-white dark:border-neutral-800 shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
-            {/* Using a placeholder from Unsplash for a professional look. You can replace the src with your actual photo later. */}
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop"
-              alt="Profile Photo Placeholder"
-              className="w-full h-full object-cover"
+          <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-full overflow-hidden border-4 border-white dark:border-neutral-800 shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
+            {/* Profile Photo */}
+            <Image
+              src="/profile.jpg"
+              alt="Abdurrahman Shaleh"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
